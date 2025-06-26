@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -28,7 +29,7 @@ public class Usuario {
 
     @OneToMany(mappedBy = "usuario",
     fetch = FetchType.LAZY,
-    cascade =  CascadeType.All,
+    cascade =  CascadeType.ALL,
     orphanRemoval = true)
     @JsonBackReference
     List<Lista_de_usuarios_asignados_al_proyecto> lista_de_usuarios_asignados_al_proyectos;
