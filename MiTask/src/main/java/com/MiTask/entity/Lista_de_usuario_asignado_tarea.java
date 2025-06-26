@@ -14,16 +14,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Table(name = "lista_de_usuarios_asignados_al_proyecto")
-public class Lista_de_usuarios_asignados_al_proyecto {
+@Table(name = "lista_de_usuario_asignado_tarea")
+public class Lista_de_usuario_asignado_tarea {
 
-    @Id
+     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name ="id_usuario")
-    @JoinColumn(name = "id_proyecto")
+    @JoinColumn(name = "id_tarea")
     private Usuario usuario;
-    private Proyecto proyecto;
+    private Tarea tarea;
 }
