@@ -1,5 +1,6 @@
 package com.MiTask.entity;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -21,20 +22,32 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @Entity
-@Table(name = "usuario")
-public class Usuario {
+@Table(name = "tarea")
+public class Tarea {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    
     private Integer id;
 
-    @Column(name = "rol", nullable = false)
-    private String rol;
+    @Column(name = "nombre", nullable = false)
+    private String nombre;
 
-    @OneToMany(mappedBy = "usuario",
+    @Column(name = "descripcion", nullable = false)
+    private String descripcion;
+
+    @Column(name = "prioridad", nullable = false)
+    private String prioridad;
+
+    @Column(name = "estado", nullable = false)
+    private String estado;
+
+    @Column(name = "fecha_vencimiento", nullable = false)
+    private LocalDate fecha_vencimiento;
+
+
+    @OneToMany(mappedBy = "tarea",
     fetch = FetchType.LAZY,
     cascade =  CascadeType.ALL,
     orphanRemoval = true)
     @JsonBackReference
-    List<Lista_de_usuarios_asignados_al_proyecto> lista_de_usuarios_asignados_al_proyectos;
+    List<Lista_de_usuario_asignado_tarea> lista_de_usuario_asignado_tareas;
 }

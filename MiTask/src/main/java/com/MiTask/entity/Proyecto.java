@@ -5,8 +5,6 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,23 +16,20 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
-@Data
 @AllArgsConstructor
-@Entity
-@Table(name = "usuario")
-public class Usuario {
+@Data
+@Table(name = "proyecto")
+public class Proyecto {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    
     private Integer id;
-
-    @Column(name = "rol", nullable = false)
     private String rol;
 
-    @OneToMany(mappedBy = "usuario",
+    @OneToMany(mappedBy = "tarea",
     fetch = FetchType.LAZY,
     cascade =  CascadeType.ALL,
     orphanRemoval = true)
     @JsonBackReference
-    List<Lista_de_usuarios_asignados_al_proyecto> lista_de_usuarios_asignados_al_proyectos;
+    List<Lista_de_tareas_asignadas_por_proyecto> lista_de_tareas_asignadas_por_proyectos;
 }
